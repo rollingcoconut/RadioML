@@ -3,7 +3,7 @@
 Nov 2: 
 (goals)
 * Generate Q-PSK samples
-* Find the characteristics of a linear classifier that can predict when a sample detects a user
+* Find the characteristics of a linear classifier that can predict a user's precense
 * Demonstrate how this task becomes harder  as SNR decreases: graph that  shows predictor accuracy over decreasing snr
 
 (accomplished)

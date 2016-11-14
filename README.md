@@ -1,3 +1,5 @@
+Coming in Tuesday, Nov 15, 6-8pm instead of Monday Nov 14 
+
 # RadioML
 
 Nov 2: 

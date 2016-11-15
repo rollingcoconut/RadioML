@@ -1,4 +1,4 @@
-Coming in Thrs, Nov 15, 2-4m instead of Monday Nov 14
+Coming in Thrs, Nov 17, 2-4 pm instead of Monday Nov 14
 
 # RadioML
 

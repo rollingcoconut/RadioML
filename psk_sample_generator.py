@@ -5,6 +5,11 @@
 # Title: Top Block
 # Generated: Wed Nov  9 21:56:48 2016
 ##################################################
+# PURPOSE: This script produces pickled files  each containig three arrays (signal, noise,
+#           input signal+noise) that are samples of a PSK signal with AWGN
+
+# USAGE: ./psk_sample_generator.py noise_amp no_trials 
+##################################################
 
 from gnuradio import analog
 from gnuradio import blocks

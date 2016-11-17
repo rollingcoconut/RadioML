@@ -5,10 +5,11 @@
 # Title: Top Block
 # Generated: Wed Nov  9 21:56:48 2016
 ##################################################
-# PURPOSE: This script produces pickled files  each containig three arrays (signal, noise,
+# PURPOSE: This script produces pickled files  each containing three arrays (signal, noise,
 #           input signal+noise) that are samples of a PSK signal with AWGN
 
 # USAGE: ./psk_sample_generator.py noise_amp no_trials 
+# DATE: Nov 17, 2016
 ##################################################
 
 from gnuradio import analog
@@ -31,9 +32,6 @@ class top_block(gr.top_block):
         ##################################################
         # Variables
         ##################################################
-        # NOTE on SNR db value: H/N -> 0.01 / 0.01 results in -3db
-        #                       H/N -> 0.01 / 0.02 results in -9db
-        #                       H/N -> 0.01 / 0.005 results in 3db
         self.signal_gain = signal_gain = 0.01
         self.samp_rate = samp_rate = 32000
         self.noise_amplitude = noise_amplitude = noise_amp  #noise_amplitude = noise_amp 
@@ -137,15 +135,11 @@ def main(top_block_cls=top_block, options=None):
             
           signal_power = sum(numpy.abs(signal)**2)/len(signal)
           noise_power = sum(numpy.abs(noise)**2)/len(signal)
-          #print(signal_power)
-          #print(noise_power)
-          #print(10*numpy.log10(signal_power/noise_power))
+          # Computed SNR: 
+          # print(10*numpy.log10(signal_power/noise_power))
 
           expected_SNR = numpy.log2(tb.signal_gain/tb.noise_amplitude)*6 -3 
           time.sleep(max(tb.ndata/tb.samp_rate, .1))                      
-
-        #print(signal_matrix)
-        #print(noise_matrix)
 
        # pickle the matrixes
         P = [ noise_matrix, signal_matrix, signal_and_noise_matrix]

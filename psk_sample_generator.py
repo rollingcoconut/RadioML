@@ -142,7 +142,7 @@ def main(top_block_cls=top_block, options=None):
 
           # Computed SNR ->  (10*numpy.log10(signal_power/noise_power))
           # also Validate expected and computed SNR 1x as bash script is running
-          if i == 50:  # matrix_ind_for_test 
+          if i == 1:  # matrix_ind_for_test 
             print("COMPUTED SNR ",10*numpy.log10(signal_power/noise_power))
             print("Expected SNR: ", expected_SNR)
 

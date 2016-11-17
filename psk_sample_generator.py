@@ -139,20 +139,29 @@ def main(top_block_cls=top_block, options=None):
             
           signal_power = sum(numpy.abs(signal)**2)/len(signal)
           noise_power = sum(numpy.abs(noise)**2)/len(signal)
-          # Computed SNR: 
-          # print(10*numpy.log10(signal_power/noise_power))
 
+          # Computed SNR ->  (10*numpy.log10(signal_power/noise_power))
+          # also Validate expected and computed SNR 1x as bash script is running
+          if i == 50:  # matrix_ind_for_test 
+            print("COMPUTED SNR ",10*numpy.log10(signal_power/noise_power))
+            print("Expected SNR: ", expected_SNR)
+
+          # EXpected SNR = (log_2(signal_gain / noise)* 6) -3
           expected_SNR = numpy.log2(tb.signal_gain/tb.noise_amplitude)*6 -3 
           time.sleep(max(tb.ndata/tb.samp_rate, .1))                      
 
-       # pickle the matrixes
+        # pickle the matrixes
         P = [ signal_matrix, noise_matrix,  signal_and_noise_matrix]
+
+        # clean up file name so it is  informative and still legal
         str_SNR=  str(abs(int(expected_SNR)))
         if expected_SNR < 0: 
             str_SNR= "neg" + str_SNR
-        filename = str_SNR + "db_" + str(ntrials) + "trials"
+        filename = str_SNR + "db_" + str(ntrials) + "samples_of_signal"
         pickle.dump( P, open(filename+ ".p" , "wb"))
           
+
+
     except EOFError:
         pass
     tb.stop()

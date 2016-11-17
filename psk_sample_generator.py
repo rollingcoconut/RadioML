@@ -8,7 +8,11 @@
 # PURPOSE: This script produces pickled files  each containing three arrays (signal, noise,
 #           input signal+noise) that are samples of a PSK signal with AWGN
 
-# USAGE: ./psk_sample_generator.py noise_amp no_trials 
+# USAGE: ./psk_sample_generator.py noise_amp ndata no_trials 
+# @param noise_amp
+# @param ndata
+# @param no_trails
+
 # DATE: Nov 17, 2016
 ##################################################
 
@@ -142,7 +146,7 @@ def main(top_block_cls=top_block, options=None):
           time.sleep(max(tb.ndata/tb.samp_rate, .1))                      
 
        # pickle the matrixes
-        P = [ noise_matrix, signal_matrix, signal_and_noise_matrix]
+        P = [ signal_matrix, noise_matrix,  signal_and_noise_matrix]
         str_SNR=  str(abs(int(expected_SNR)))
         if expected_SNR < 0: 
             str_SNR= "neg" + str_SNR

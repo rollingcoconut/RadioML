@@ -1,4 +1,5 @@
-Coming in Thrs, Nov 17, 2-4 pm instead of Monday Nov 14
+Almost finished with part 4; will get back to work Sunday evening
+Spent Fri -Sun (nov20) at healthcare makerthon
 
 # RadioML
 

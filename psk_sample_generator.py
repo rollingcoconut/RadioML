@@ -158,12 +158,10 @@ def main(top_block_cls=top_block, options=None):
           time.sleep(max(tb.ndata/tb.samp_rate, .1))                      
 
         # clean up file name so it is  informative and still legal
-        str_SNR=  str(abs(int(expected_SNR)))
-        if expected_SNR < 0: 
-            str_SNR= "neg" + str_SNR
-        sigfilename = str_SNR + "db_" + str(ntrials) + "samples_of_signal"
-        noisefilename = str_SNR + "db_" + str(ntrials) + "samples_of_noise"         
-	sigplusnoisefilename = str_SNR + "db_" + str(ntrials) + "samples_of_sn"
+        str_SNR=  str(round(args.snr,1))
+        sigfilename = "samples_" + str_SNR + "db_" + str(ntrials) + "_signal"
+        noisefilename = "samples_" + str_SNR + "db_" + str(ntrials) + "_noise"         
+	sigplusnoisefilename = "samples_" + str_SNR + "db_" + str(ntrials) + "_sn"
 	numpy.save(sigfilename, signal_matrix)
         numpy.save(noisefilename, noise_matrix)
 	numpy.save(sigplusnoisefilename, signal_and_noise_matrix)

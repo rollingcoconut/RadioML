@@ -20,7 +20,7 @@ mkdir -p "samples"
 
 for snr in ${SNR[*]} ; do
 	for sample_quant in ${ndata[*]} ; do
-		python  psk_sample_generator.py $snr $ntrials $sample_quant
+		python  psk_sample_generator.py $snr $sample_quant $ntrials
 		mv samples_"$snr"db_"$sample_quant"_"$ntrials"_signal.npy samples
 		mv samples_"$snr"db_"$sample_quant"_"$ntrials"_noise.npy samples
 		mv samples_"$snr"db_"$sample_quant"_"$ntrials"_sn.npy samples

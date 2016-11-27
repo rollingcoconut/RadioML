@@ -136,18 +136,23 @@ def main(top_block_cls=top_block, options=None):
           signal_matrix[i] = signal
           signal_and_noise_matrix[i] = signal_matrix[i] + noise_matrix[i]
 
-            
           signal_power = sum(numpy.abs(signal)**2)/len(signal)
           noise_power = sum(numpy.abs(noise)**2)/len(signal)
+
+          expected_SNR = 10*numpy.log10(tb.signal_gain**2/tb.noise_amplitude**2)   
 
           # Computed SNR ->  (10*numpy.log10(signal_power/noise_power))
           # also Validate expected and computed SNR 1x as bash script is running
           if i == 1:  # matrix_ind_for_test 
-            print("COMPUTED SNR ",10*numpy.log10(signal_power/noise_power))
+            print("Computed SNR: ",10*numpy.log10(signal_power/noise_power))
             print("Expected SNR: ", expected_SNR)
-
-          # EXpected SNR = (log_2(signal_gain / noise)* 6) -3
-          expected_SNR = numpy.log2(tb.signal_gain/tb.noise_amplitude)*6 -3 
+	    snr_error = abs(10*numpy.log10(signal_power/noise_power) - expected_SNR)
+	    if snr_error > 1:
+		print("****************************************************************")
+		print("Warning: SNR of generated signal is different from expected value.")
+		print("(this can happen if you use GNU Radio version that is < 3.7.8.)")
+		print("***************************************************************")
+ 
           time.sleep(max(tb.ndata/tb.samp_rate, .1))                      
 
         # clean up file name so it is  informative and still legal

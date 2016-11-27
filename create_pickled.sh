@@ -13,16 +13,17 @@
 # 	Nov 17 2016
 ############################
 ntrials=128
-NOISE_AMP=(.01 .0075 .005 .0025 ) 
-SNR=(-3 0 3 10)
+SNR=("-3.0" "0.0" "3.0" "10.0")
 ndata=(64 128 256 512 1024 2048 4096)
 
+mkdir -p "samples"
 
-# Make modification so if file already exists don't print it again
-
-for noise_amp in ${NOISE_AMP[*]} ; do
+for snr in ${SNR[*]} ; do
 	for sample_quant in ${ndata[*]} ; do
-		python  psk_sample_generator.py $noise_amp $ntrials $sample_quant
+		python  psk_sample_generator.py $snr $ntrials $sample_quant
+		mv samples_"$snr"db_"$sample_quant"_"$ntrails"_signal.npy samples
+		mv samples_"$snr"db_"$sample_quant"_"$ntrails"_noise.npy samples
+		mv samples_"$snr"db_"$sample_quant"_"$ntrails"_sn.npy samples
 	done
 done
 

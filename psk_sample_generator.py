@@ -108,7 +108,7 @@ def main(top_block_cls=top_block, options=None):
     parser.add_argument("ntrials", help="number of trials, ex. 2", type=int)
     args = parser.parse_args()
 
-    noise_amp = 1.0/100*(1/numpy.sqrt(10**args.snr/10.0)))
+    noise_amp = 1.0/100*(1/numpy.sqrt(10**(args.snr/10.0)))
 
     tb = top_block_cls(noise_amp, args.ndata)
     tb.start()
@@ -145,7 +145,7 @@ def main(top_block_cls=top_block, options=None):
 
           # Computed SNR ->  (10*numpy.log10(signal_power/noise_power))
           # also Validate expected and computed SNR 1x as bash script is running
-          if i == 1:  # matrix_ind_for_test 
+          if i == 0:  # matrix_ind_for_test 
             print("Computed SNR: ",10*numpy.log10(signal_power/noise_power))
             print("Expected SNR: ", expected_SNR)
 	    snr_error = abs(10*numpy.log10(signal_power/noise_power) - expected_SNR)

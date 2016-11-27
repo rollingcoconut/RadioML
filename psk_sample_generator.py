@@ -115,7 +115,8 @@ def main(top_block_cls=top_block, options=None):
 
     try:
         ntrials=args.ntrials
-        
+        ndata=args.ndata
+ 
         noise_matrix = numpy.ndarray(shape=(ntrials, tb.ndata), dtype=complex)
         signal_matrix = numpy.ndarray(shape=(ntrials, tb.ndata), dtype=complex)
         signal_and_noise_matrix = numpy.ndarray(shape=(ntrials, tb.ndata), dtype=complex)
@@ -159,9 +160,9 @@ def main(top_block_cls=top_block, options=None):
 
         # clean up file name so it is  informative and still legal
         str_SNR=  str(round(args.snr,1))
-        sigfilename = "samples_" + str_SNR + "db_" + str(ntrials) + "_signal"
-        noisefilename = "samples_" + str_SNR + "db_" + str(ntrials) + "_noise"         
-	sigplusnoisefilename = "samples_" + str_SNR + "db_" + str(ntrials) + "_sn"
+        sigfilename = "samples_" + str_SNR + "db_" + str(ndata) + "_" + str(ntrials) + "_signal"
+        noisefilename = "samples_" + str_SNR + "db_" + str(ndata) + "_" + str(ntrials) + "_noise"         
+	sigplusnoisefilename = "samples_" + str_SNR + "db_" + str(ndata) + "_" + str(ntrials) + "_sn"
 	numpy.save(sigfilename, signal_matrix)
         numpy.save(noisefilename, noise_matrix)
 	numpy.save(sigplusnoisefilename, signal_and_noise_matrix)

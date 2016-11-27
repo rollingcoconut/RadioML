@@ -150,16 +150,17 @@ def main(top_block_cls=top_block, options=None):
           expected_SNR = numpy.log2(tb.signal_gain/tb.noise_amplitude)*6 -3 
           time.sleep(max(tb.ndata/tb.samp_rate, .1))                      
 
-        # pickle the matrixes
-        P = [ signal_matrix, noise_matrix,  signal_and_noise_matrix]
-
         # clean up file name so it is  informative and still legal
         str_SNR=  str(abs(int(expected_SNR)))
         if expected_SNR < 0: 
             str_SNR= "neg" + str_SNR
-        filename = str_SNR + "db_" + str(ntrials) + "samples_of_signal"
-        pickle.dump( P, open(filename+ ".p" , "wb"))
-          
+        sigfilename = str_SNR + "db_" + str(ntrials) + "samples_of_signal"
+        noisefilename = str_SNR + "db_" + str(ntrials) + "samples_of_noise"         
+	sigplusnoisefilename = str_SNR + "db_" + str(ntrials) + "samples_of_sn"
+	numpy.save(sigfilename, signal_matrix)
+        numpy.save(noisefilename, noise_matrix)
+	numpy.save(sigplusnoisefilename, signal_and_noise_matrix)
+ 
 
 
     except EOFError:

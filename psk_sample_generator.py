@@ -9,9 +9,9 @@
 #           input signal+noise) that are samples of a PSK signal with AWGN
 
 # USAGE: ./psk_sample_generator.py noise_amp ndata no_trials 
-# @param noise_amp
+# @param snr
 # @param ndata
-# @param no_trails
+# @param no_trials
 
 # DATE: Nov 17, 2016
 ##################################################
@@ -103,12 +103,14 @@ class top_block(gr.top_block):
 def main(top_block_cls=top_block, options=None):
     # Parse command line arguments
     parser = argparse.ArgumentParser()
-    parser.add_argument("noise_amp", help="amplitude of noise, ex. 0.01. Signal gain is 0.01, and sample rate is 3200", type=float)
+    parser.add_argument("snr", help="desired snr passed in db, ex 3",type=float)
     parser.add_argument("ndata", help="number of consecutive samples collected at a time, ex. 2048", type=int)
     parser.add_argument("ntrials", help="number of trials, ex. 2", type=int)
     args = parser.parse_args()
 
-    tb = top_block_cls(args.noise_amp, args.ndata)
+    noise_amp = 1.0/100*(1/numpy.sqrt(10**args.snr/10.0)))
+
+    tb = top_block_cls(noise_amp, args.ndata)
     tb.start()
 
     try:

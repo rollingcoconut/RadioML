@@ -146,10 +146,16 @@ def main(top_block_cls=top_block, options=None):
 
           # Computed SNR ->  (10*numpy.log10(signal_power/noise_power))
           # also Validate expected and computed SNR 1x as bash script is running
-          if i == 0:  # matrix_ind_for_test 
-            print("Computed SNR: ",10*numpy.log10(signal_power/noise_power))
+          if i == 0:  # matrix_ind_for_test
+	    try:
+	    	computed_snr = 10*numpy.log10(signal_power/noise_power) 
+	    except RuntimeError:
+                print("Division by zero error when computing SNR.")
+		print("SNR comparison may not be reliable.")
+		computed_snr = 0
+            print("Computed SNR: ", computed_snr)
             print("Expected SNR: ", expected_SNR)
-	    snr_error = abs(10*numpy.log10(signal_power/noise_power) - expected_SNR)
+	    snr_error = abs(computed_snr - expected_SNR)
 	    if snr_error > 1:
 		print("****************************************************************")
 		print("Warning: SNR of generated signal is different from expected value.")

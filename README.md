@@ -3,16 +3,10 @@ Spent Fri -Sun (nov20) at healthcare makerthon
 
 # RadioML
 
-Nov 2: 
+Nov 29: 
 (goals)
-* Generate Q-PSK samples
-* Find the characteristics of a linear classifier that can predict a user's precense
-* Demonstrate how this task becomes harder  as SNR decreases: graph that  shows predictor accuracy over decreasing snr
+* parts 4 for new samples 
+* part 5
+ 
 
-(accomplished)
-* Generated some Q-PSK samples 
-* Decided to use svm classifer (has fit/predict functions in library) that will train on training set and specified snr
-* Wrote scaffold for classifier
 
-(to immediately do)
-* Map accuracy vs a degrading snr

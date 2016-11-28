@@ -130,7 +130,9 @@ def main(top_block_cls=top_block, options=None):
             signal = (tb.blocks_probe_signal_only.level())      
             signal_power = sum(numpy.abs(signal)**2)/len(signal)
 
-        for i in range(ntrials):
+	i = 0
+	old_signal_power = signal_power
+        while i < ntrials:
           sn = (tb.blocks_probe_signal_and_noise.level())   
           noise = (tb.blocks_probe_noise_only.level())                      
           signal = (tb.blocks_probe_signal_only.level())  
@@ -142,25 +144,27 @@ def main(top_block_cls=top_block, options=None):
           signal_power = sum(numpy.abs(signal)**2)/len(signal)
           noise_power = sum(numpy.abs(noise)**2)/len(signal)
 
-          expected_SNR = 10*numpy.log10(tb.signal_gain**2/tb.noise_amplitude**2)   
+	  if signal_power != old_signal_power:
+		old_signal_power = signal_power
+		i = i + 1
+	        expected_SNR = 10*numpy.log10(tb.signal_gain**2/tb.noise_amplitude**2)   
 
-          # Computed SNR ->  (10*numpy.log10(signal_power/noise_power))
-          # also Validate expected and computed SNR 1x as bash script is running
-          if i == 0:  # matrix_ind_for_test
-	    try:
-	    	computed_snr = 10*numpy.log10(signal_power/noise_power) 
-	    except RuntimeError:
-                print("Division by zero error when computing SNR.")
-		print("SNR comparison may not be reliable.")
-		computed_snr = 0
-            print("Computed SNR: ", computed_snr)
-            print("Expected SNR: ", expected_SNR)
-	    snr_error = abs(computed_snr - expected_SNR)
-	    if snr_error > 1:
-		print("****************************************************************")
-		print("Warning: SNR of generated signal is different from expected value.")
-		print("(this can happen if you use GNU Radio version that is < 3.7.8.)")
-		print("***************************************************************")
+	        # Computed SNR ->  (10*numpy.log10(signal_power/noise_power))
+       		# also Validate expected and computed SNR 1x as bash script is running
+	    	try:
+	    		computed_snr = 10*numpy.log10(signal_power/noise_power) 
+	    	except RuntimeError:
+                	print("Division by zero error when computing SNR.")
+			print("SNR comparison may not be reliable.")
+			computed_snr = 0
+            	print("Computed SNR: ", computed_snr)
+           	print("Expected SNR: ", expected_SNR)
+	    	snr_error = abs(computed_snr - expected_SNR)
+	    	if snr_error > 1:
+			print("****************************************************************")
+			print("Warning: SNR of generated signal is different from expected value.")
+			print("(this can happen if you use GNU Radio version that is < 3.7.8.)")
+			print("***************************************************************")
  
           time.sleep(max(tb.ndata/tb.samp_rate, .1))                      
 

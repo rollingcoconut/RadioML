@@ -3,14 +3,11 @@ Spent Fri -Sun (nov20) at healthcare makerthon
 
 # RadioML
 
-Nov 29: (forgot I have an ML test tomorrow; will come in tomorrow Nov 29th afternoon 6-8pm) 
+Nov 29: parts 3,4 done for new samples (need to tweak density SNR plots;
+formula I use for computing SNR (10log10(sP/nP)) is 3db off
+	- notebook is easier to navigate with code cleaned up
+	- notebook is consistent
 
-ACCOMPLISHED
-* parts 4 for new samples : density plot of SNR added -- but it's a straight line, which sort 
-
-TODO 
-* part 5 (working here) 
- 
 
 3. Modify your notebook so that you read in a pickled array for a given SNR, rather
 than generating the signal and noise samples yourself. (Don't create a new

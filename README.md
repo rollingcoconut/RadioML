@@ -1,7 +1,8 @@
 # RadioML
 
-Nov 29: parts 3,4 done for new samples (need to tweak density SNR plots;
+Nov 29: parts 3,4 done for new samples (running into trouble with density SNR plots;
 formula I use for computing SNR (10log10(sP/nP)) is 3db off
+	
 	- notebook is easier to navigate with code cleaned up
 	- notebook is consistent
 

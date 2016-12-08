@@ -1,6 +1,13 @@
 # RadioML
 
 Dec 7: Coming in tomorrow,Dec 8 ~[1-3pm]. Will spend day still working on the week's work but will be working remotely. 
+*OBSERVATION: I addressed the following, and have made some observations in my
+notebook (fyi thanks for your email; it was super helpful!)
+
+(what I addressed today so far) we should be computing the moment 128 times, one
+for each trial.
+
+
 
 Nov 29: parts 3,4 done for new samples (running into trouble with density SNR plots;
 formula I use for computing SNR (10log10(sP/nP)) is 3db off

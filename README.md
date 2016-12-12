@@ -1,6 +1,14 @@
 # RadioML
 
-Dec 7: Coming in tomorrow,Dec 8 ~[1-3pm]. Will spend day still working on the week's work but will be working remotely. 
+Dec 12 : Have a groove going in the library so will be working from here; please
+email if  I should come to lab to discuss anything. I've made a modular function
+to plot {M2,M4} vs SNR and am working on to plot k_a vs k_w. By end of today
+should  have plots for these things (hopefully SVR estimator features as well).
+
+Dec 13: in from 6pm-10pm; will be working on designing a policy, how to test
+that policy on our synthesized  data (step  8 of list) 
+
+
 *OBSERVATION: I addressed the following, and have made some observations in my
 notebook (fyi thanks for your email; it was super helpful!)
 

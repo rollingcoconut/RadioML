@@ -5,7 +5,11 @@ email if  I should come to lab to discuss anything. I've made a modular function
 to plot {M2,M4} vs SNR and am working on to plot k_a vs k_w. By end of today
 should  have plots for these things (hopefully SVR estimator features as well).
 
-Dec 13: in from 6pm-10pm; will be working on designing a policy, how to test
+Dec 13: (email accessible working from cafe till 10pm): 
+Now:  ρ_M2M4
+After: wil plot 46, β, and ρ_svr
+
+(tonight) will be working on designing a policy, how to test
 that policy on our synthesized  data (step  8 of list) 
 
 

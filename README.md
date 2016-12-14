@@ -1,31 +1,22 @@
 # RadioML
 
-Dec 12 : Have a groove going in the library so will be working from here; please
-email if  I should come to lab to discuss anything. I've made a modular function
-to plot {M2,M4} vs SNR and am working on to plot k_a vs k_w. By end of today
-should  have plots for these things (hopefully SVR estimator features as well).
 
-Dec 13: (email accessible working from cafe till 10pm): 
-Now:  ρ_M2M4
-After: wil plot 46, β, and ρ_svr
+Dec 14:  Times are a rolling along and I need to start with the ML part of
+the project that I can tackle  successfully; here's a paper from China that uses
+an SVM classifier to determine whether the sample classifies as noise or as noisy signal.
 
-(tonight) will be working on designing a policy, how to test
-that policy on our synthesized  data (step  8 of list) 
+http://ieeexplore.ieee.org/document/6040028/
 
+This is pretty much in line with what I can accomplish. What I'm going to do
+(feel free to comment) is make two svm classifiers (they both should have better
+predictive results than energy detection*) but one will be trained on the
+collected data, and the other will be trained on the moments -- so just
+different feature sets
 
-*OBSERVATION: I addressed the following, and have made some observations in my
-notebook (fyi thanks for your email; it was super helpful!)
+The  results of which feature set is better is what I hope to include in my
+results section
 
-(what I addressed today so far) we should be computing the moment 128 times, one
-for each trial.
-
-
-
-Nov 29: parts 3,4 done for new samples (running into trouble with density SNR plots;
-formula I use for computing SNR (10log10(sP/nP)) is 3db off
-	
-	- notebook is easier to navigate with code cleaned up
-	- notebook is consistent
+* need to figure out how to do energy detection 
 
 
 /3. Modify your notebook so that you read in a pickled array for a given SNR, rather

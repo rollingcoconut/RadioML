@@ -18,6 +18,9 @@ results section
 
 * need to figure out how to do energy detection 
 
+You're feedback on this early implementation outline is greatly appreciated
+
+------------------------------------------------------------------
 
 /3. Modify your notebook so that you read in a pickled array for a given SNR, rather
 than generating the signal and noise samples yourself. (Don't create a new

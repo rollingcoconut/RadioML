@@ -22,18 +22,18 @@ You're feedback on this early implementation outline is greatly appreciated
 
 ------------------------------------------------------------------
 
-/3. Modify your notebook so that you read in a pickled array for a given SNR, rather
+3. Modify your notebook so that you read in a pickled array for a given SNR, rather
 than generating the signal and noise samples yourself. (Don't create a new
 notebook; just edit the existing one that we have been working with.) Push to
 Github.
 
-\4. In that notebook, create those three figures - the scatter plot of average
+4. In that notebook, create those three figures - the scatter plot of average
 power, the density plot of average power, and the density plot of SNR - for each
 of the SNRs. Are the "noise" and "signal+noise" classes easily separable using
 "average received power" as the feature? Explain. Push to Github.
 
 
-\5. Now look at alternative features on which to classify. Consider the M2M4
+5. Now look at alternative features on which to classify. Consider the M2M4
 estimator, explain (in your notebook):
 
 * What is the intuition behind the 2nd moment of a signal? behind the 4th
@@ -55,14 +55,14 @@ M2 = np.mean(abs(signal)**2)
 M4 = np.mean(abs(signal)**4)
 
 
-\6. Repeat step 5, with the terms in the SVR estimator: the expression in equation
+6. Repeat step 5, with the terms in the SVR estimator: the expression in equation
 46, β, and ρ_svr.
 
-\7. How do each of the following vary with SNR: M2, M4, k_a, k_w, ρ_M2M4, the
+7. How do each of the following vary with SNR: M2, M4, k_a, k_w, ρ_M2M4, the
 expression in equation 46, β, and ρ_svr. (You can make a line plot with markers,
 where SNR varies along the horizontal axis)
 
-\8. Based on what you have learned from 5, 6, 7, which of the following do you think
+8. Based on what you have learned from 5, 6, 7, which of the following do you think
 might be useful features with which to try and distinguish (classify)
 signal+noise and noise-only classes? M2, M4, k_a, k_w, ρ_M2M4, the expression in
 equation 46, β, and ρ_svr, some other combination of these?
